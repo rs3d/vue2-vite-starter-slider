@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       vue: 'vue/dist/vue.esm.js',
+      'vue-slider-component': 'vue-slider-component/dist/vue-slider-component.umd.js',
     },
   },
   build: {

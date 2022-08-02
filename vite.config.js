@@ -6,14 +6,24 @@ import { createVuePlugin as vue } from 'vite-plugin-vue2'
 export default defineConfig({
   plugins: [vue()],
   resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      vue: 'vue/dist/vue.esm.js',
-      'vue-slider-component': 'vue-slider-component/dist/vue-slider-component.umd.js',
-    },
+    alias: [
+      {
+        find: '@',
+        replacement: fileURLToPath(new URL('./src', import.meta.url)),
+      },
+      {
+        find: 'vue',
+        replacement: 'vue/dist/vue.esm.js',
+      },
+      {
+        find: /^vue-slider-component$/,
+        replacement: 'vue-slider-component/dist/vue-slider-component.umd.js',
+      },
+    ],
   },
   build: {
     brotliSize: false, // unsupported in StackBlitz
     minify: false,
+    sourcemap: 'inline',
   },
 })
